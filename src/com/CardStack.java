@@ -16,7 +16,7 @@ public class CardStack {
 			int m = sc.nextInt();
 			if (n == 0)
 				break;
-			
+
 			// Add the card-box;
 			Solution t = new Solution(n, m);
 			for (int i = 0; i < n; ++i) {
@@ -27,14 +27,17 @@ public class CardStack {
 				}
 			}
 			// Add Operations;
-			String opr = sc.next();
+			String opr = "";
+			if(n + m - 2 > 0)
+				opr = sc.next();
 			t.setOperations(opr);
-			
+
 			testCases.add(t);
 		}
 		sc.close();
-		for (Solution s : testCases) {
-			s.print();
+		for(int i = 0; i < testCases.size(); ++i) {
+			System.out.print("Test " + (i + 1) + ": ");
+			testCases.get(i).print();
 		}
 	}
 

@@ -14,15 +14,13 @@ public class Card {
 		char b = str.charAt(1);
 		char c = str.charAt(2);
 		int v = 13 * find_index(deck, b) + find_index(card, c);
-		if (a == 'F')
+		if (a == 'D')
 			v = -v;
 		return v;
 	}
 
 	public static String to_string(int v) {
-		String ret = "U";
-		if (v < 0)
-			ret = "F";
+		String ret = "";
 		v = Math.abs(v);
 		ret = ret + String.valueOf(deck[v / 13]) + String.valueOf(card[v % 13]);
 		return ret;

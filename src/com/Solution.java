@@ -1,5 +1,7 @@
 package com;
 
+import java.util.ArrayList;
+
 public class Solution {
 	private int n;
 	private int m;
@@ -15,6 +17,11 @@ public class Solution {
 		n = n2;
 		m = m2;
 		stack = new Stack[n][m];
+		for(int i = 0; i < n; ++i) {
+			for(int j = 0; j < m; ++j) {
+				stack[i][j] = new Stack<Integer>();
+			}
+		}
 		this.operations = "";
 		BL = 0;
 		BR = m - 1;
@@ -67,9 +74,9 @@ public class Solution {
 		}
 		BD = i - 1;
 	}
-	
+
 	private final void solve() {
-		for(int i = 0; i < operations.length(); i++) {
+		for (int i = 0; i < operations.length(); i++) {
 			char c = operations.charAt(i);
 			switch (c) {
 			case 'T':
@@ -100,14 +107,25 @@ public class Solution {
 
 	public void print() {
 		this.solve();
-		assert(BL == BR);
-		assert(BU == BD);
-		int i = BL;
-		int j = BD;
-		while(!stack[i][j].empty()) {
+		assert (BL == BR);
+		assert (BU == BD);
+		int i = BU;
+		int j = BL;
+		ArrayList<Integer> put = new ArrayList<>();
+		while (!stack[i][j].empty()) {
 			int g = stack[i][j].pop();
-			System.out.print(Card.to_string(g) + " ");
+			if(g > 0)
+				continue;
+			put.add(g);
 		}
+		for(i = put.size() - 1; i >= 0; i--) {
+			int e = put.get(i);
+			String g = Card.to_string(e);
+			System.out.print(g);
+			if(i > 0)
+				System.out.print(" ");
+		}
+		System.out.println();
 	};
 
 }
