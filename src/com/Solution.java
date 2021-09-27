@@ -28,7 +28,10 @@ public class Solution {
 		BU = 0;
 		BD = n - 1;
 	}
-
+	
+	/*
+	 * Performs the Left Operation.
+	 */
 	private final void rotateL() {
 		// Puts Left most to second stack;
 		// Don't ensure anything.
@@ -41,7 +44,9 @@ public class Solution {
 		}
 		BL = j + 1;
 	}
-
+	/*
+	 * Performs the Right Operation
+	 */
 	private final void rotateR() {
 		int j = BR;
 		for (int i = BU; i <= BD; ++i) {
@@ -52,7 +57,10 @@ public class Solution {
 		}
 		BR = j - 1;
 	}
-
+	
+	/*
+	 * Performs the Top Operation
+	 */
 	private final void rotateT() {
 		int i = BU;
 		for (int j = BL; j <= BR; ++j) {
@@ -74,7 +82,10 @@ public class Solution {
 		}
 		BD = i - 1;
 	}
-
+	
+	/*
+	 * Executes the Rotations
+	 */
 	private final void solve() {
 		for (int i = 0; i < operations.length(); i++) {
 			char c = operations.charAt(i);
@@ -96,7 +107,7 @@ public class Solution {
 			}
 		}
 	}
-
+	// Pushes an Element into the stack at index (i,j);
 	public void push(int i, int j, int x) {
 		stack[i][j].push(x);
 	}

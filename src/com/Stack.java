@@ -1,6 +1,12 @@
 package com;
-
+/*
+ * Implement Using a Singly Linked List.
+ * The First element is the head;
+ */
 public class Stack<T> {
+	/*
+	 * Represents a single node in the linked list.
+	 */
 	private class node {
 		T value;
 		node next;
@@ -10,9 +16,10 @@ public class Stack<T> {
 			next = null;
 		}
 	}
-
+	// The head of the Stack, i.e the first element.
 	public node head = null;
 
+	// Push an element into the stack.
 	public void push(T x) {
 		node r = new node(x);
 		if (head == null) {
@@ -22,7 +29,7 @@ public class Stack<T> {
 		node l = lastNode();
 		l.next = r;
 	}
-
+	// Helper function to the get the last element of the stack.
 	private node lastNode() {
 		assert (head != null);
 		node l = head;
@@ -30,7 +37,7 @@ public class Stack<T> {
 			l = l.next;
 		return l;
 	}
-
+	// 
 	public T pop() {
 		assert (head != null);
 		node l = head;
